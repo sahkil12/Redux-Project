@@ -8,7 +8,6 @@ export const fetchPhotos = async (query, page=1, per_page=20) => {
           params:{query, page, per_page},
           headers:{Authorization:`Client-ID ${UNSPLASH_KEY}`}
      })
-
      console.log(res?.data?.results);
 } 
 
@@ -17,6 +16,5 @@ export const fetchVideo = async (query, per_page=15) => {
           params:{query, per_page},
           headers:{Authorization:`Client-ID ${PEXELS_KEY}`}
      })
-
      console.log(res?.data?.videos);
 } 
