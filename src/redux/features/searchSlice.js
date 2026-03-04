@@ -5,7 +5,7 @@ const searchSlice = createSlice({
      initialState: {
           query: "",
           activeTab: "photos",
-          result: [],
+          results: [],
           loading: false,
           error: null
      },
@@ -16,19 +16,25 @@ const searchSlice = createSlice({
           setActiveTabs(state, action) {
                state.activeTab = action.payload
           },
-          setResult(state, action) {
-               state.result = action.payload
+          setResults(state, action) {
+               state.loading = false
+               state.results = action.payload
           },
-          setLoading(state, action) {
-               state.loading = action.payload
+          setLoading(state) {
+               state.loading = true
+               state.error = null
           },
           setError(state, action) {
                state.error = action.payload
+               state.loading = false
+          },
+          clearResults(state){
+               state.results = []
           }
 
      }
 })
 
-export const {setQuery, setActiveTabs, setResult, setLoading, setError}= searchSlice.actions
+export const {setQuery, setActiveTabs, setResult, setLoading, setError, clearResults}= searchSlice.actions
 
 export default searchSlice.reducer
