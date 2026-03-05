@@ -8,13 +8,13 @@ export const fetchPhotos = async (query, page=1, per_page=20) => {
           params:{query, page, per_page},
           headers:{Authorization:`Client-ID ${UNSPLASH_KEY}`}
      })
-     console.log(res?.data?.results);
+     return res?.data?.results
 } 
 
-export const fetchVideo = async (query, per_page=15) => {
+export const fetchVideos = async (query, per_page=15) => {
      const res = await axios.get("https://api.pexels.com/v1/videos/search", {
           params:{query, per_page},
           headers:{Authorization:`Client-ID ${PEXELS_KEY}`}
      })
-     console.log(res?.data?.videos);
+     return res?.data?.videos;
 } 
