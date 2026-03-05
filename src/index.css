@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+#bottom{
+     background: linear-gradient(transparent, black);
+}

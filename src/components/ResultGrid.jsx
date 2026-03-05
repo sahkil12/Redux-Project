@@ -25,7 +25,8 @@ const ResultGrid = () => {
                               types: 'photo',
                               title: item.alt_description,
                               thumbnail: item.urls.small,
-                              src: item.urls.full
+                              src: item.urls.full,
+                              url: item.links.html
                          }))
                     }
                     if (activeTab == "videos") {
@@ -35,7 +36,8 @@ const ResultGrid = () => {
                               types: 'video',
                               title: item.user.name || "video",
                               thumbnail: item.image,
-                              src: item.video_files[1].link
+                              src: item.video_files[1].link,
+                              url: item.url
                          }))
                     }
                     dispatch(setResults(data))
@@ -51,10 +53,15 @@ const ResultGrid = () => {
      if (loading) return <span className="loading loading-xl "></span>
 
      return (
-          <div className="w-full p-5 md:w-11/12 mx-auto flex flex-wrap gap-5 ">
+          <div className="w-full p-6 md:w-11/12 mx-auto flex flex-wrap gap-5 overflow-auto">
                {
                     results?.map((item, idx) => (
-                         <ResultCard key={idx} item={item}></ResultCard>
+                         console.log(item.url),
+                      <div key={idx}>
+                           <a target="_blank" href={item.url}>
+                               <ResultCard item={item}></ResultCard>
+                           </a>
+                      </div>
                     ))
                }
           </div>
